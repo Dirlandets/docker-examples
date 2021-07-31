@@ -1,0 +1,33 @@
+version: '2.2'
+
+services:
+  app:
+    restart: always
+    build:
+      context: .
+    env_file: .env
+    cpus: 2
+    mem_limit: 512m
+    ports:
+      - '5000:5000'
+    volumes:
+      - .:/app
+    depends_on: 
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:12-alpine
+    env_file: .env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - 5432:5432
+
+volumes:
+  pgdata:
