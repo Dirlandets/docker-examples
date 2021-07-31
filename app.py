@@ -2,8 +2,8 @@ from flask import Flask, render_template, request
 
 from database import migrate, get_session
 from crud import get_product, create_product
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 
 def create_app(create_db=True):

@@ -3,8 +3,8 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, scoped_session
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 DB_NAME = os.environ.get('DB_URL')
 engine = create_engine(DB_NAME, echo = True)
