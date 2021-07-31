@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Products list</h1>
+<form action="" method="post" name="login">
+    <p><input name="name"></p>
+    <p><input type="submit" value="Sign In"></p>
+</form>
+
+{% for product in products %}
+<div>
+    <h3>{{product.name}}</h3>
+    <p>
+        {{product.id}} says: <b>{{product.name}}</b>
+    </p>
+</div>
+{% endfor %}
+{% endblock %}
