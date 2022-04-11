@@ -27,4 +27,5 @@ def create_prod():
     form = request.form
     session = get_session()
     create_product(session, form['name'])
-    return render_template('products_page.html', context={})
+    products = get_product(session)
+    return render_template('products_page.html', context={}, products=products)
